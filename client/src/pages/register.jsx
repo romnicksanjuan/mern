@@ -12,7 +12,7 @@ function Register() {
 
   const checkUser = async () =>{
     try {
-      const response = await axios.post('https://mern-server-khaki.vercel.app/', {name,username,password})
+      const response = await axios.post('/', {name,username,password})
 
       if(response.data.userExists){
        setMessage('username already exist')
@@ -65,7 +65,7 @@ function Register() {
   </div>
 
   <button type='submit' className={style.register}>Register</button>
-  <p>Already have an account? <Link to="/api/login">Login</Link></p>
+  <p>Already have an account? <Link to="/login">Login</Link></p>
 
   </form>
   </div>
