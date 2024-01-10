@@ -3,6 +3,7 @@ import { useState } from 'react'
 import axios from 'axios'
 
 
+
 import { Link } from 'react-router-dom';
 
 function Register() {
@@ -14,8 +15,14 @@ function Register() {
   const checkUser = async () =>{
     try {
       
-      const response = await axios.post('https://mern-server-inky.vercel.app/login', {username,password})
-      setMessage(response.data.message)
+      const response = await axios.post('http://localhost:3000/login', {username,password})
+
+      if(response.status === 200){
+        setMessage(response.data.message)
+      }else if(response.status === 400){
+        setMessage(response.data.message)
+      }
+      
 
      } catch (error) {
        console.log(error)
@@ -38,7 +45,7 @@ function Register() {
       <form onSubmit={handleSubmit}>
       <h2>Login Account</h2>
 
-      {message && <p className='message'>{message}</p>}
+      {message && <p className="">{message}</p>}
 
 
       <div className='mb-3'>

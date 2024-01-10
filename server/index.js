@@ -2,8 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose');
 const cors = require('cors')
 const User = require('./model/user')
-// const bcrypt = require('bcrypt')
-const router = require('./api/productRoutes')
+
+
 const fs = require('fs')
 const path = require('path')
 const multer = require('multer')
@@ -11,13 +11,13 @@ const Product = require('./model/product')
 
 const app = express();
 
-app.use(cors(
-        {
-                origin:["https://mern-rosy-tau.vercel.app"],
-                methods:["POST","GET"],
-                credentials:true
-         }
-))
+app.use(cors());
+//         {
+//                 origin:["https://mern-rosy-tau.vercel.app"],
+//                 methods:["POST","GET"],
+//                 credentials:true
+//          }
+// ))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'uploads')))
 
@@ -29,13 +29,11 @@ mongoose.connect('mongodb+srv://romnick:1234@romnickdb.e14diyv.mongodb.net/myreg
 app.post('/', async(req,res) => {
     const {name, username, password} = req.body;
 
-    const check = await User.findOne({username});
-
     try {
+        const check = await User.findOne({username});
         if(check){
          res.json({userExists:true})
         }else{
-        // const hashPassword = await bcrypt.hash(password,10)
         const saveUser = new User({name,username,password})
         await saveUser.save();
         res.json({userExists:false})
@@ -49,15 +47,16 @@ app.post('/login', async(req,res) =>{
     const {username, password} = req.body;
 
     try {
-    //     const checkUsername = await User.findOne({username})
-    // if(checkUsername){
-    //     const compare = await bcrypt(password, checkUsername.password)
-    //     if(compare){
-    //         res.json({message:"success"})
-    //     }else{
-    //         res.json({message:true})
-    //     }
-    // }
+        const checkUsername = await User.findOne({username})
+    if(checkUsername){
+        const checkPassword = await User.findOne({password})
+        // res.status(300).json({message})
+        if(checkPassword){
+            res.status(200).json({message:"success"})
+        }else{
+            res.status(400).json({message:"password incorrect"})
+        }
+    }
     }catch(error){
     console.log(error)
     }
