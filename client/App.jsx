@@ -21,11 +21,11 @@ function App() {
      <div>
      <BrowserRouter>
       <Routes>
-        <Route path='/api/home' element={<Home/>}></Route>
+        <Route path='/home' element={<Home/>}></Route>
         <Route path='/api/about' element={<About/>}></Route>
         <Route path='/' element={<Register/>}></Route>
         <Route path='/api/display' element={<Display/>}></Route>
-        <Route path='/api/login' element={<Login/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
 
 
         <Route path='/api/product-list' element={<ProductList/>}></Route>
