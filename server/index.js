@@ -19,7 +19,6 @@ app.use(cors(
          }
 ))
 app.use(express.json())
-app.use('/api', router)
 app.use(express.static(path.join(__dirname, 'uploads')))
 
 mongoose.connect('mongodb+srv://romnick:1234@romnickdb.e14diyv.mongodb.net/myreg')
