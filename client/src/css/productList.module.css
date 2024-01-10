@@ -1,0 +1,78 @@
+
+.daily{
+  color: orange;
+  text-align: center;
+  font-size: 16px;
+  background: white;
+  margin: 0 auto;
+  padding: 5px;
+  max-width: 80%;
+  border-bottom: 3px solid red;
+}
+
+   .main {
+    /* background: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    margin: 0;
+    padding-top: 6px; 
+   
+  }
+
+  
+.gridcontainer {
+  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 13px;
+  /* border: 1px solid #ddd; */
+  max-width: 100%;
+  margin: 0;
+  width: 80%; 
+  background: white;
+  
+ }
+
+.griditem {
+  border: 1px solid #ddd;
+  position: relative;
+  text-align:center;
+  width: 165px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+             /* padding: 10px;  */
+             /* background: blue;  */
+   height: 240px;
+  transition:all 0.5s ease;
+  position: relative;
+}  
+
+.griditem:hover{
+  bottom: 1px;
+  border: 1px solid red;
+  
+} 
+
+.image{
+  width: 165px;
+  height: 165px;
+}
+
+.title{
+  text-align: left;
+  margin:0 7px;
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+.price{
+  text-align: left;
+  margin-left: 7px;
+  margin-bottom: 0;
+  color: red;
+  position: absolute;
+  bottom: 3px;
+}

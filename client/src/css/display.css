@@ -1,0 +1,23 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+Style for table header
+th {
+    background-color: orange;
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+Style for table cells
+td {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+/* Alternating row colors for better readability */
+ tr:nth-child(even) {
+    background-color: #f2f2f2;
+} 
