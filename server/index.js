@@ -32,11 +32,11 @@ app.post('/', async(req,res) => {
     try {
         const check = await User.findOne({username});
         if(check){
-         res.json({message:"register successsfully"})
+         res.json({message:"user exist"})
         }else{
         const saveUser = new User({name,username,password})
         await saveUser.save();
-        res.json({message:"not successfull"})
+        res.json({message:"register successsfully"})
         }
         
     } catch (error) {
