@@ -11,7 +11,7 @@ function Register() {
 
   const checkUser = async () =>{
     try {
-      const response = await axios.post('http://localhost:3000/', {name,username,password})
+      const response = await axios.post(https://mern-server-inky.vercel.app/', {name,username,password})
       console.log(response.data)
      } catch (error) {
        console.log(error)
