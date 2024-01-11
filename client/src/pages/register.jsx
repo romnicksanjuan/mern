@@ -8,17 +8,11 @@ function Register() {
   const [username , serUsername] = useState();
   const [password , setPassword] = useState();
 
-  const [message, setMessage] = useState('');
 
   const checkUser = async () =>{
     try {
       const response = await axios.post('http://localhost:3000/', {name,username,password})
-
-      if(response.data.userExists){
-       setMessage('username already exist')
-      }else{
-       setMessage('register successfully')
-      }
+      console.log(response.data)
      } catch (error) {
        console.log(error)
      }
@@ -41,7 +35,7 @@ function Register() {
       <form onSubmit={handleSubmit}>
       <h2 className={style.title}>Register</h2>
 
-      {message && <p className={style.message}>{message}</p>}
+      
 
       <div className='mb-3'>
         <label htmlFor="name">

@@ -32,11 +32,11 @@ app.post('/', async(req,res) => {
     try {
         const check = await User.findOne({username});
         if(check){
-         res.json({userExists:true})
+         res.json({message:"register successsfully"})
         }else{
         const saveUser = new User({name,username,password})
         await saveUser.save();
-        res.json({userExists:false})
+        res.json({message:"not successfull"})
         }
         
     } catch (error) {
@@ -50,7 +50,7 @@ app.post('/login', async(req,res) =>{
         const checkUsername = await User.findOne({username})
     if(checkUsername){
         const checkPassword = await User.findOne({password})
-        // res.status(300).json({message})
+      
         if(checkPassword){
             res.status(200).json({message:"success"})
         }else{
