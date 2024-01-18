@@ -22,14 +22,14 @@ function App() {
      <BrowserRouter>
       <Routes>
         <Route path='/home' element={<Home/>}></Route>
-        <Route path='/about' element={<About/>}></Route>
+        <Route path='/api/about' element={<About/>}></Route>
         <Route path='/' element={<Register/>}></Route>
-        <Route path='/display' element={<Display/>}></Route>
+        <Route path='/api/display' element={<Display/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
 
 
-        <Route path='/product-list' element={<ProductList/>}></Route>
-        <Route path='/create' element={<CreateProduct/>}></Route>
+        <Route path='/api/product-list' element={<ProductList/>}></Route>
+        <Route path='/api/create' element={<CreateProduct/>}></Route>
 
         
       </Routes>
