@@ -98,6 +98,15 @@ app.post('/create', upload.single('file'), async(req,res)=>{
 
 app.get('/home', (req,res) =>{
     res.json({message:'this is home page'})
+});
+
+app.get('/display', async(req,res) =>{
+    try {
+       const user = await User.find({});
+       res.json(user)
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 app.listen(3000, () =>{
