@@ -95,6 +95,11 @@ app.post('/create', upload.single('file'), async(req,res)=>{
     }
 })
 
+
+app.get('/home', (req,res) =>{
+    res.json({message:'this is home page'})
+})
+
 app.listen(3000, () =>{
     console.log('running on port 3000')
 });
