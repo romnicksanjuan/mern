@@ -85,7 +85,7 @@ app.post('/create', upload.single('file'), async (req, res) => {
     try {
         const saveProduct = new Product({
             title: req.body.title,
-            data: fs.readFileSync(path.join("uploads/" + req.file.filename)),
+            data: fs.readFileSync(path.join("uploads/images" + req.file.filename)),
             contentType: req.file.mimetype,
             price: req.body.price
         })
