@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
 import axios from 'axios'
-
+import style from '../css/login.module.css'
+import { useNavigate } from 'react-router-dom';
 
 
 import { Link } from 'react-router-dom';
@@ -11,15 +12,23 @@ function Register() {
   const [password , setPassword] = useState();
 
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const checkUser = async () =>{
     try {
       
-      const response = await axios.post('https://mern-server-inky.vercel.app/login', {username,password})
+      const response = await axios.post('https://mern-server-inky.vercel.app//login', {username,password})
 
-      if(response.status === 200){
+      if(response.data.message === 'user not found'){
         setMessage(response.data.message)
-      }else if(response.status === 400){
+      }
+
+      if(response.data.message === 'success'){
+        navigate('/')
+        setMessage(response.data.message)
+      }
+
+      if(response.data.message === 'password incorrect'){
         setMessage(response.data.message)
       }
       
@@ -40,12 +49,12 @@ function Register() {
   return (
 
     <>
-     
+     <div className={style.container}>
 
       <form onSubmit={handleSubmit}>
-      <h2>Login Account</h2>
+      <h2 className={style.title}>Login Account</h2>
 
-      {message && <p className="">{message}</p>}
+      {message && <p className={style.message}>{message}</p>}
 
 
       <div className='mb-3'>
@@ -62,10 +71,11 @@ function Register() {
     <input type="text" name="password" id="password" autoComplete='off' placeholder='enter your password' className='form-control rounded-0' onChange={(e) => setPassword(e.target.value)}/>
   </div>
 
-  <button type='submit' className='btn btn-success w-100 rounded-0'>Login</button>
+  <button type='submit' className={style.login}>Login</button>
   <p>Create New Account <Link to="/">Register</Link></p>
 
   </form>
+  </div>
   </>
     
   )

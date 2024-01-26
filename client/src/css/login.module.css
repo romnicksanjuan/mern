@@ -43,7 +43,7 @@ input {
     border-radius: 4px;
 }
 
-.register {
+.login {
     background-color: orange;
     color: #fff;
     padding: 10px;
@@ -51,10 +51,9 @@ input {
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
-    
 }
 
-.register:hover {
+.login:hover {
     background-color: darkorange;
 }
 .message{
