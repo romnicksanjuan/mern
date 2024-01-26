@@ -28,7 +28,7 @@ const handleSubmit = (e) => {
   return (
 
     <>
-    <NavBar/>
+    {/* <NavBar/> */}
       <form onSubmit={handleSubmit}>
       <h2>Create</h2>
 
