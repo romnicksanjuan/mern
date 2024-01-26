@@ -70,7 +70,7 @@ app.post('/login', async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "uploads/images")
+        cb(null, "uploads")
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname); // Set the filename
@@ -85,7 +85,7 @@ app.post('/create', upload.single('file'), async (req, res) => {
     try {
         const saveProduct = new Product({
             title: req.body.title,
-            data: fs.readFileSync(path.join("uploads/images" + req.file.filename)),
+            data: fs.readFileSync(path.join("uploads" + req.file.filename)),
             contentType: req.file.mimetype,
             price: req.body.price
         })
