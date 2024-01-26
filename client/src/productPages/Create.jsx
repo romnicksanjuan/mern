@@ -20,11 +20,20 @@ const handleSubmit = (e) => {
   formData.append('price', price)
   formData.append('file', selected)
   
-
-  axios.post('https://mern-server-inky.vercel.app/create', formData)
-  .then(response => console.log(response.data))
-  .catch(err => console.log(err))
+  saveProduct();
 }
+
+const saveProduct = async () =>{
+
+  try {
+    const response = await axios.post('https://mern-server-inky.vercel.app/create', formData)
+    console.log(response.data)
+  } catch (error) {
+    console.log(error)
+  }
+
+}
+
 
   return (
 
