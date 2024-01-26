@@ -12,7 +12,7 @@ function CreateProduct() {
   const [price , setPrice] = useState();
   const [selected , setSelectedFiles] = useState(null);
 //   const navigate = useNavigate();
-  use
+  
 const handleSubmit = (e) => {
   e.preventDefault();
   const formData = new FormData();
