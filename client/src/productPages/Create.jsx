@@ -12,7 +12,7 @@ function CreateProduct() {
   const [price , setPrice] = useState();
   const [selected , setSelectedFiles] = useState(null);
 //   const navigate = useNavigate();
-  
+
 const handleSubmit = (e) => {
   e.preventDefault();
   const formData = new FormData();
@@ -20,7 +20,7 @@ const handleSubmit = (e) => {
   formData.append('price', price)
   formData.append('file', selected)
   
-  
+
   axios.post('https://mern-server-inky.vercel.app/create', formData)
   .then(response => console.log(response.data))
   .catch(err => console.log(err))
