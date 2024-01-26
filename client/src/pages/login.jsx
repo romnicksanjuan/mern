@@ -17,7 +17,7 @@ function Register() {
   const checkUser = async () =>{
     try {
       
-      const response = await axios.post('https://mern-server-inky.vercel.app//login', {username,password})
+      const response = await axios.post('https://mern-server-inky.vercel.app/login', {username,password})
 
       if(response.data.message === 'user not found'){
         setMessage(response.data.message)
