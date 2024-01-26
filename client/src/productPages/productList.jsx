@@ -12,7 +12,7 @@ function ProductList() {
     useEffect(() => {
       const fetchAllImages = async () => {
         try {
-          const response = await axios.get('https://mern-server-khaki.vercel.app/api/product-list');
+          const response = await axios.get('https://mern-server-inky.vercel.app/product-list');
           setProducts(response.data);
         } catch (error) {
           console.error(error);
@@ -31,7 +31,7 @@ function ProductList() {
 
 
        {products.map((product) => (
-             <div key={product.id}>
+        <div key={product.id}>
        <div className={style.griditem}>
         <img className={style.image} src={`data:image/jpeg;base64,${product.data}`} alt={product.title} />
             <p className={style.title}>{product.title}</p>

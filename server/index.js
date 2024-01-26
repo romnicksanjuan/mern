@@ -91,11 +91,27 @@ app.post('/create', upload.single('file'), async(req,res)=>{
             
             price:req.body.price})
         await saveProduct.save();
-        
+        res.json({message:"Product Created Successfully"})
     } catch (error) {
         console.log(error)
     }
 })
+
+app.get('/product-list', async (req,res) =>{
+    try {
+        const product = await Product.find({});
+        const displayProduct = product.map((product) =>({
+            id:product._id.toString(),
+            title:product.title,
+            data:product.data.toString('base64'),
+            price:product.price
+        }))
+        res.json(displayProduct)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 
 app.get('/home', (req,res) =>{

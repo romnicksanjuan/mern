@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../navigation/nav';
 
 
 
@@ -19,13 +20,15 @@ const handleSubmit = (e) => {
   formData.append('price', price)
   formData.append('file', selected)
   
-  axios.post('https://mern-server-khaki.vercel.app/api/create', formData)
+  axios.post('https://mern-server-inky.vercel.app/create', formData)
   .then(response => console.log(response.data))
   .catch(err => console.log(err))
 }
 
   return (
 
+    <>
+    <NavBar/>
       <form onSubmit={handleSubmit}>
       <h2>Create</h2>
 
@@ -53,7 +56,7 @@ const handleSubmit = (e) => {
   <button type='submit' className='btn btn-success w-100 rounded-0'>Create</button>
   
   </form>
- 
+  </>
     
   )
 }
