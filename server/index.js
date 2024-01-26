@@ -70,7 +70,7 @@ app.post('/login', async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, process.cwd() + "/uploads/")
+        cb(null, process.cwd() + "uploads/")
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + file.originalname.replace(/\s+/g, "-")); // Set the filename
