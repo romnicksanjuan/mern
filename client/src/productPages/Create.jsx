@@ -27,7 +27,7 @@ function CreateProduct() {
       formData.append('file', selected)
 
     try {
-      const response = await fetch('https://mern-server-inky.vercel.app/create', {
+      const response = await fetch('http://localhost:3000/create', {
         method: 'POST',
         body: formData,
       });

@@ -11,13 +11,13 @@ const Product = require('./model/product')
 
 const app = express();
 
-app.use(cors(
-    {
-        origin: ["https://mern-rosy-tau.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-))
+app.use(cors())
+//     {
+//         origin: ["https://mern-rosy-tau.vercel.app"],
+//         methods: ["POST", "GET"],
+//         credentials: true
+//     }
+// ))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'uploads')))
 
@@ -70,7 +70,7 @@ app.post('/login', async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, process.cwd() + "uploads/")
+        cb(null, "uploads/")
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname); // Set the filename
@@ -85,7 +85,7 @@ app.post('/create', upload.single('file'), async (req, res) => {
     try {
         const saveProduct = new Product({
             title: req.body.title,
-            data: fs.readFileSync(path.join("uploads/" + req.file.filename)),
+            data: fs.readFileSync(path.join(__dirname , "uploads/" + req.file.filename)),
             contentType: req.file.mimetype,
             price: req.body.price
         })
