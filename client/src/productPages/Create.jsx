@@ -21,20 +21,25 @@ function CreateProduct() {
   }
 
   const saveProduct = async () => {
-
-    try {
       const formData = new FormData();
       formData.append('title', title)
       formData.append('price', price)
       formData.append('file', selected)
-      
-      const response = await axios.post('https://mern-server-inky.vercel.app/create', formData)
-      console.log(response.data)
+
+    try {
+      const response = await fetch('https://mern-server-inky.vercel.app/create', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+      console.log(result.message); // Log the server response
     } catch (error) {
-      console.log(error)
+      console.error('Error uploading image:', error);
     }
 
   }
+  
 
 
   return (
