@@ -19,7 +19,7 @@ app.use(cors(
     }
 ))
 app.use(express.json())
-app.use(express.static(path.join(__dirname, 'uploads')))
+app.use(express.static(path.join(__dirname, '/uploads/')))
 
 mongoose.connect('mongodb+srv://romnick:1234@romnickdb.e14diyv.mongodb.net/myreg')
     .then(() => console.log('connected success'))
@@ -68,9 +68,9 @@ app.post('/login', async (req, res) => {
 
 
 
-const storage = multer.memoryStorage({
+const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "/server/uploads")
+        cb(null, "/uploads/")
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname); // Set the filename
@@ -85,7 +85,7 @@ app.post('/create', upload.single('file'), async (req, res) => {
     try {
         const saveProduct = new Product({
             title: req.body.title,
-            data: fs.readFileSync(path.join("uploads" + req.file.filename)),
+            data: fs.readFileSync(path.join("/uploads/" + req.file.filename)),
             contentType: req.file.mimetype,
             price: req.body.price
         })
