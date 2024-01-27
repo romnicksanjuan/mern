@@ -5,8 +5,8 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    data:Buffer,
-    contentType:String,
+    // data:Buffer,
+    // contentType:String,
     price:{
         type:Number,
         required:true
